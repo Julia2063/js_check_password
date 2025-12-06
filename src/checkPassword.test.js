@@ -8,12 +8,49 @@ describe(`Function 'checkPassword':`, () => {
   });
 
   it(`should return boolean`, () => {
+    const isPasswordValid = checkPassword('P@ssword1!');
 
+    expect(typeof isPasswordValid).toBe('boolean');
   });
 
   it(`should return 'true' for the valid password with 8 characters`, () => {
+    const isPasswordValid = checkPassword('Password1!');
 
+    expect(isPasswordValid).toBe(true);
   });
 
-  // write more tests here
+  it(`should return 'false' for the valid password
+     with more than 16 characters`, () => {
+    const isPasswordValid = checkPassword('Password1fhrfherhfhwbefhve!');
+
+    expect(isPasswordValid).toBe(false);
+  });
+
+  it(`should return 'false' for the invalid password
+     without at least one digit`, () => {
+    const isPasswordValid = checkPassword('Password!');
+
+    expect(isPasswordValid).toBe(false);
+  });
+
+  it(`should return 'false' for the invalid password
+     without at least one special character`, () => {
+    const isPasswordValid = checkPassword('Password1');
+
+    expect(isPasswordValid).toBe(false);
+  });
+
+  it(`should return 'false' for the invalid password
+     without at least one uppercase letter`, () => {
+    const isPasswordValid = checkPassword('password1!');
+
+    expect(isPasswordValid).toBe(false);
+  });
+
+  it(`should return 'false' for the invalid password
+     with Cyrillic letters`, () => {
+    const isPasswordValid = checkPassword('Passвord1!');
+
+    expect(isPasswordValid).toBe(false);
+  });
 });
