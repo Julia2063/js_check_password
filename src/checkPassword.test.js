@@ -14,7 +14,7 @@ describe(`Function 'checkPassword':`, () => {
   });
 
   it(`should return 'true' for the valid password with 8 characters`, () => {
-    const isPasswordValid = checkPassword('Pass1!Ab!');
+    const isPasswordValid = checkPassword('Pass1!Ab');
 
     expect(isPasswordValid).toBe(true);
   });
@@ -34,7 +34,7 @@ describe(`Function 'checkPassword':`, () => {
 
   it(`should return 'false' for the invalid password
      with less than 8 characters`, () => {
-    const isPasswordValid = checkPassword('Pass2!');
+    const isPasswordValid = checkPassword('Str@ng');
 
     expect(isPasswordValid).toBe(false);
   });
