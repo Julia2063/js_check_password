@@ -14,14 +14,27 @@ describe(`Function 'checkPassword':`, () => {
   });
 
   it(`should return 'true' for the valid password with 8 characters`, () => {
-    const isPasswordValid = checkPassword('Password1!');
+    const isPasswordValid = checkPassword('Pass1!Ab!');
 
     expect(isPasswordValid).toBe(true);
   });
 
-  it(`should return 'false' for the valid password
+  it(`should return 'true' for the valid password with 16 characters`, () => {
+    const isPasswordValid = checkPassword('Password1234567!');
+
+    expect(isPasswordValid).toBe(true);
+  });
+
+  it(`should return 'false' for the invalid password
      with more than 16 characters`, () => {
     const isPasswordValid = checkPassword('Password1fhrfherhfhwbefhve!');
+
+    expect(isPasswordValid).toBe(false);
+  });
+
+  it(`should return 'false' for the invalid password
+     with less than 8 characters`, () => {
+    const isPasswordValid = checkPassword('Pass2!');
 
     expect(isPasswordValid).toBe(false);
   });
